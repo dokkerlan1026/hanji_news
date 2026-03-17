@@ -19,7 +19,7 @@ _Learn about the person you're helping. Update this as you go._
   - 偏好臺灣常用詞，例如人工智慧、圖片、搜尋、螢幕、關鍵字、連結、部落格、建立、自然搜尋流量、優化、自然搜尋、自然搜尋結果、導覽、品質、垃圾內容、晶片、視覺化、影片。
   - 不要用「搜尋控制台」或「搜索控制台」，直接用 Google Search Console。
   - 回覆風格要生動流利，少用「旨在」、「總的來說」這類生硬詞。
-## Context
+  - 未來這個 git repo 作為日常資料存放區使用：每天建立日期資料夾存放 Markdown 檔，README.md 維護目錄、每日摘要與連結；若當天沒有新增檔案則跳過不更新。## Context
 
 _(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
 
