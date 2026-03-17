@@ -36,3 +36,32 @@ If identifiable, what might resolve this
 ```
 
 ---
+## [ERR-20260317-001] groq-stt-api-auth
+
+**Logged**: 2026-03-17T18:33:00+08:00
+**Priority**: high
+**Status**: pending
+**Area**: config
+
+### Summary
+Groq STT integration test failed with HTTP 403 Forbidden using provided API key.
+
+### Error
+```
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+```
+
+### Context
+- Operation: test Groq STT transcription against `/openai/v1/audio/transcriptions`
+- Script: `skills/groq-stt/scripts/transcribe_groq.py`
+- Input: `outputs/youtube-vision/jNQXAC9IVRw/test-audio.wav`
+- Likely causes: invalid key, revoked key, project restriction, or missing speech API entitlement.
+
+### Suggested Fix
+Verify the Groq API key in console, ensure speech-to-text access is enabled, and retry with a fresh key.
+
+### Metadata
+- Reproducible: yes
+- Related Files: skills/groq-stt/scripts/transcribe_groq.py
+
+---
