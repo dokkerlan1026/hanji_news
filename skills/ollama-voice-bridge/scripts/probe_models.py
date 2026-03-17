@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 import argparse
 import json
+import os
 import urllib.request
+
+DEFAULT_BASE_URL = os.environ.get('OLLAMA_VOICE_BASE_URL', 'http://127.0.0.1:11434')
 
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('--base-url', default='http://220.132.50.141:11434')
+    p.add_argument('--base-url', default=DEFAULT_BASE_URL)
     args = p.parse_args()
 
     with urllib.request.urlopen(f"{args.base_url}/api/tags", timeout=60) as resp:

@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 import argparse
 import json
+import os
 import sys
 import urllib.error
 import urllib.request
+
+DEFAULT_BASE_URL = os.environ.get('OLLAMA_VOICE_BASE_URL', 'http://127.0.0.1:11434')
 
 
 def post_json(url, payload):
@@ -18,7 +21,7 @@ def post_json(url, payload):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('--base-url', default='http://220.132.50.141:11434')
+    p.add_argument('--base-url', default=DEFAULT_BASE_URL)
     p.add_argument('--endpoint', choices=['generate', 'chat', 'show'], default='generate')
     p.add_argument('--model', required=True)
     p.add_argument('--prompt')

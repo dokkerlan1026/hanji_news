@@ -3,7 +3,7 @@
 ## Verified observations
 
 Server:
-- `http://220.132.50.141:11434`
+- use `OLLAMA_VOICE_BASE_URL` for the private Ollama endpoint
 
 Observed models of interest:
 - `sematre/orpheus:zh`

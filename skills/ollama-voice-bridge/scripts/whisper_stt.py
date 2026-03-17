@@ -2,8 +2,11 @@
 import argparse
 import base64
 import json
+import os
 from pathlib import Path
 import urllib.request
+
+DEFAULT_BASE_URL = os.environ.get('OLLAMA_VOICE_BASE_URL', 'http://127.0.0.1:11434')
 
 
 def call_generate(base_url, model, prompt, system=None):
@@ -36,7 +39,7 @@ def build_audio_prompt(audio_path, language):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('--base-url', default='http://220.132.50.141:11434')
+    p.add_argument('--base-url', default=DEFAULT_BASE_URL)
     p.add_argument('--model', default='karanchopda333/whisper:latest')
     p.add_argument('--language', default='zh')
     p.add_argument('--text', help='Prompt-driven STT test input')

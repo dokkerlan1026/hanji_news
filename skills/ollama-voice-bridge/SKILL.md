@@ -1,11 +1,11 @@
 ---
 name: ollama-voice-bridge
-description: Bridge to a remote Ollama service for speech-related models and voice workflows. Use when a user wants to call the remote Ollama server at 220.132.50.141, inspect available models, run the sematre/orpheus:zh TTS-style model, run the karanchopda333/whisper:latest STT-style model, or create / debug Python wrappers around Ollama HTTP APIs for local voice tooling.
+description: Bridge to a user-controlled Ollama service for speech-related models and voice workflows. Use when a user wants to call their local or private Ollama server, inspect available models, run the sematre/orpheus:zh TTS-style model, run the karanchopda333/whisper:latest STT-style model, or create / debug Python wrappers around Ollama HTTP APIs for local voice tooling.
 ---
 
 # Ollama Voice Bridge
 
-Use the remote Ollama service at `http://220.132.50.141:11434`.
+Use a user-controlled Ollama service through `OLLAMA_VOICE_BASE_URL`. Do not hardcode or casually repeat private IP addresses in chat replies, skills, or committed files unless the user explicitly wants that exposure.
 
 ## Quick workflow
 

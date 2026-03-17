@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 import argparse
 import json
+import os
 from pathlib import Path
 import urllib.request
+
+DEFAULT_BASE_URL = os.environ.get('OLLAMA_VOICE_BASE_URL', 'http://127.0.0.1:11434')
 
 
 def call_generate(base_url, model, prompt, system=None):
@@ -20,7 +23,7 @@ def call_generate(base_url, model, prompt, system=None):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('--base-url', default='http://220.132.50.141:11434')
+    p.add_argument('--base-url', default=DEFAULT_BASE_URL)
     p.add_argument('--model', default='sematre/orpheus:zh')
     p.add_argument('--text', required=True, help='Text to send to the Orpheus model')
     p.add_argument('--style', default='natural', help='Style hint for prompt')
