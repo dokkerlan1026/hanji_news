@@ -1,0 +1,2 @@
+{"task":"transcribe","language":"Chinese","duration":3.33,"text":"你好 憨吉,你能听到吗?","segments":[{"id":0,"seek":0,"start":0,"end":3.34,"text":"你好 憨吉,你能听到吗?","tokens":[50365,26410,220,29713,101,42866,11,2166,8225,31022,4511,14769,30,50532],"temperature":0,"avg_logprob":-0.37641934,"compression_ratio":0.73170733,"no_speech_prob":0.009158021}],"x_groq":{"id":"req_01kkxrjn5rfh88ttx5821swfe9"}}
+
