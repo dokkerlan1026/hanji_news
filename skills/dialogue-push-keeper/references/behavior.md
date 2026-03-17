@@ -41,3 +41,9 @@ A timed push is due only when:
 ## Practical note
 
 If you want this behavior to run automatically outside active conversation, pair this skill with a scheduler such as an OpenClaw cron job or heartbeat-driven check. The skill itself defines the rules and scripts; scheduling is the deployment layer.
+
+For B-mode, prefer the script-first approach:
+- record the assistant reply timestamp that starts the idle timer
+- schedule a one-shot job
+- let the script inspect the transcript directly
+- if no newer user message exists, send one fixed Chinese update via `openclaw message send`

@@ -80,6 +80,9 @@ Not push-worthy by itself:
 - `scripts/push_now_if_needed.py`
   - Push immediately if local branch is ahead
   - Print a short summary for user-facing follow-up
+- `scripts/idle_notify_if_silent.py`
+  - Script-first idle-mode notifier
+  - Sends a fixed Chinese background-mode message only when no newer user message exists after a recorded assistant-reply timestamp
 
 ## References
 
