@@ -31,7 +31,7 @@ Treat both as model-specific and experimental. Do not promise real audio transcr
 - Generate text: `POST /api/generate`
 - Chat: `POST /api/chat`
 
-Base URL default: `http://220.132.50.141:11434`
+Base URL default: `OLLAMA_VOICE_BASE_URL` or fallback `http://127.0.0.1:11434`
 
 ## When to use which script
 
