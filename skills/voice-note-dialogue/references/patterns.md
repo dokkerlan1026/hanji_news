@@ -38,5 +38,7 @@ TTS audio:
 
 - Keep replies short and natural.
 - Do not over-correct ambiguous words in the transcript.
+- Apply only light normalization, such as punctuation cleanup and common Traditional Chinese replacements.
+- TTS reply text should not include emoji.
 - If transcription confidence is shaky, say so.
 - Archive Markdown stays in the dated folder and `README.md` gets one extra bullet with tags and summary.

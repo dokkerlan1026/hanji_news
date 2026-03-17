@@ -58,6 +58,8 @@ Use when the user wants a reusable workflow:
   - Save transcript + reply into the dated repo structure and update `README.md`
 - `scripts/run_voice_note_job.py`
   - One-command workflow for A + B + C together
+  - Auto-fills current date and time prefix when omitted
+  - Archives into the daily repo structure
 
 ## References
 

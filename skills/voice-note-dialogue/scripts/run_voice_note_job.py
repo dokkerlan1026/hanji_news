@@ -2,6 +2,7 @@
 import argparse
 import json
 import subprocess
+from datetime import datetime
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -17,12 +18,16 @@ def run_json(cmd):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('audio')
-    p.add_argument('--date', required=True)
-    p.add_argument('--time-prefix', required=True)
+    p.add_argument('--date')
+    p.add_argument('--time-prefix')
     p.add_argument('--repo-root', default='/home/andy/.openclaw/workspace')
     p.add_argument('--title', default='語音留言測試')
     p.add_argument('--with-tts', action='store_true')
     args = p.parse_args()
+
+    now = datetime.now()
+    date_str = args.date or now.strftime('%Y-%m-%d')
+    time_prefix = args.time_prefix or now.strftime('%H%M')
 
     flow = run_json([
         'python3', str(SCRIPT_DIR / 'voice_note_flow.py'),
@@ -33,7 +38,7 @@ def main():
 
     audio_out = None
     if args.with_tts:
-        audio_out = str(Path(args.repo_root) / args.date / f"{args.time_prefix}_語音留言回覆.mp3")
+        audio_out = str(Path(args.repo_root) / date_str / f"{time_prefix}_語音留言回覆.mp3")
         subprocess.run([
             'python3', str(SCRIPT_DIR / 'edge_tts_synthesize.py'),
             '--text', flow['reply'],
@@ -43,8 +48,8 @@ def main():
     archive_cmd = [
         'python3', str(SCRIPT_DIR / 'archive_voice_note.py'),
         '--repo-root', args.repo_root,
-        '--date', args.date,
-        '--time-prefix', args.time_prefix,
+        '--date', date_str,
+        '--time-prefix', time_prefix,
         '--transcription', flow['transcription'],
         '--reply', flow['reply'],
         '--title', args.title,
@@ -56,6 +61,8 @@ def main():
         raise SystemExit(res.stderr or res.stdout)
 
     out = {
+        'date': date_str,
+        'time_prefix': time_prefix,
         'transcription': flow['transcription'],
         'reply': flow['reply'],
         'archive_markdown': res.stdout.strip(),

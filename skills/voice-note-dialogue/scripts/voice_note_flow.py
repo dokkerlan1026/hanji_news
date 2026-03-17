@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -19,13 +20,34 @@ def transcribe(audio_path: str, language: str) -> str:
     return res.stdout.strip()
 
 
-def simple_reply(user_text: str) -> str:
+def normalize_transcript(text: str) -> str:
+    out = text.strip()
+    replacements = {
+        '听': '聽',
+        '吗': '嗎',
+        '吗?': '嗎？',
+        '?': '？',
+        ',': '，',
+    }
+    for a, b in replacements.items():
+        out = out.replace(a, b)
+    out = re.sub(r'\s+', ' ', out).strip()
+    return out
+
+
+def strip_emoji(text: str) -> str:
+    return re.sub(r'[\U00010000-\U0010ffff]', '', text).strip()
+
+
+def simple_reply(user_text: str, tts_safe: bool = False) -> str:
     text = user_text.strip()
     if not text:
-        return '老爸，我這邊沒聽清楚，再丟一次給我。'
-    if '聽到嗎' in text or '听到吗' in text:
-        return '有，我聽得到，老爸 😎'
-    return f'我收到你的語音了，重點是：{text}'
+        reply = '老爸，我這邊沒聽清楚，再丟一次給我。'
+    elif '聽到嗎' in text or '听到吗' in text or '聽到嗎' in text:
+        reply = '有，我聽得到，老爸 😎'
+    else:
+        reply = f'我收到你的語音了，重點是：{text}'
+    return strip_emoji(reply) if tts_safe else reply
 
 
 def main():
@@ -36,8 +58,8 @@ def main():
     p.add_argument('--tts-output', help='Path to save reply text for downstream TTS')
     args = p.parse_args()
 
-    transcript = transcribe(args.audio, args.language)
-    reply = simple_reply(transcript)
+    transcript = normalize_transcript(transcribe(args.audio, args.language))
+    reply = simple_reply(transcript, tts_safe=(args.mode == 'tts-handoff'))
 
     out = {
         'mode': args.mode,
