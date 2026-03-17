@@ -21,7 +21,8 @@ _Learn about the person you're helping. Update this as you go._
   - 回覆風格要生動流利，少用「旨在」、「總的來說」這類生硬詞。
   - 未來這個 git repo 作為日常資料存放區使用：每天建立日期資料夾存放 Markdown 檔，README.md 維護目錄、每日摘要與連結；若當天沒有新增檔案則跳過不更新。
   - 私有基礎設施資訊（例如家中 / 個人主機 IP）不要在對外內容、repo 或 skill 中寫死或外露，優先改用環境變數或本機設定。
-  - 語音回覆 / TTS 用文字不要包含 emoji，避免語音輸出不自然。## Context
+  - 語音回覆 / TTS 用文字不要包含 emoji，避免語音輸出不自然。
+  - 對答節奏：要先正常回覆，再開始計算 10 分鐘靜默；若使用者在這期間有新問題，要優先即時回應。A 的半小時推送可獨立計時。## Context
 
 _(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
 

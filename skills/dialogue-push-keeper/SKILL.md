@@ -33,15 +33,19 @@ Interpretation:
 
 ## Short task-break behavior
 
-When the user implies a short pause, use this pattern:
+Timing rule for B-mode:
 
-- “好，我先去處理，等有結果或有問題我再回來。”
+1. Reply to the user first.
+2. Only after that reply is sent, start the 10-minute silence timer.
+3. If the user sends any new message during that 10-minute window, respond normally and reset the timer after the new reply.
+4. Only when the assistant has already replied and the user stays silent for more than 10 minutes should B-mode begin.
 
-Do not keep sending timer chatter every few minutes. Only come back when:
+When B-mode begins, use this pattern internally:
 
-- the task is finished
-- a blocker appears
-- a timed push happened and there is something worth summarizing
+- quietly handle background work
+- return only if there is a useful result, a blocker, or a push summary
+
+Do not keep sending timer chatter every few minutes.
 
 ## What counts as push-worthy
 

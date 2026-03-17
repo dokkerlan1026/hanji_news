@@ -20,6 +20,11 @@ Good:
 - `好，我先去處理，等有結果我再回來。`
 - `我先去弄，卡住我再叫你。`
 
+Important timing rule:
+- the 10-minute idle timer starts only after the assistant has already replied
+- any new user message cancels the idle transition and gets a normal timely reply first
+- only after post-reply silence longer than 10 minutes should background-mode behavior begin
+
 Avoid:
 - repetitive countdowns
 - needless “still working” chatter
