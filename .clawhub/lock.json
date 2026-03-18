@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "skills": {
+    "binance-trading-signal": {
+      "version": "1.0.0",
+      "installedAt": 1773715501466
+    },
+    "trading-research": {
+      "version": "1.0.0",
+      "installedAt": 1773715503502
+    },
+    "binance": {
+      "version": "1.0.0",
+      "installedAt": 1773715504111
+    },
+    "self-improving": {
+      "version": "1.2.16",
+      "installedAt": 1773829986868
+    }
+  }
+}
