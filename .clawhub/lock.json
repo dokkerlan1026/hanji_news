@@ -16,6 +16,10 @@
     "self-improving": {
       "version": "1.2.16",
       "installedAt": 1773829986868
+    },
+    "proactivity": {
+      "version": "1.0.1",
+      "installedAt": 1773830222382
     }
   }
 }
